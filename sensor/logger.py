@@ -15,7 +15,24 @@ s = sched.scheduler(time.time, time.sleep)
 def measure(sc):
     humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
     print(humidity, temperature)
+    requests.post(API_URL, data={
+        measurements: buildMeasurements(temperature, humidity)
+    })
     s.enter(SECOND_BETWEEN_MEASURE, 1, measure, (sc,))
 
 s.enter(SECOND_BETWEEN_MEASURE, 1, measure, (s,))
 s.run()
+
+def buildMeasurements(temperature, humidity):
+    return [{
+    			"measurement": "temperature_living_room_in",
+    			"fields": {
+    				"value": temperature
+    			}
+    		},
+    		{
+    			"measurement": "humidity_living_room_in",
+    			"fields": {
+    				"value": humidity
+    			}
+    		}]
