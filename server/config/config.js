@@ -2,11 +2,11 @@
 module.exports = {
     port: 3001,
     database: {
-        host: process.env.INFLUXDB_HOST,
-        port: process.env.INFLUXDB_PORT,
+        host: process.env.INFLUXDB_HOST || 'localhost',
+        port: process.env.INFLUXDB_PORT || 8086,
         protocol: 'http',
-        username: process.env.INFLUXDB_USERNAME,
-        password: process.env.INFLUXDB_PASSWORD
+        username: process.env.INFLUXDB_USERNAME || 'admin',
+        password: process.env.INFLUXDB_PASSWORD || 'admin'
     },
     measurements: {
         living_room_in: {
