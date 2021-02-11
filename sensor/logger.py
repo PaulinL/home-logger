@@ -36,8 +36,6 @@ def buildMeasurements(temperature, humidity):
 
 def measure(sc):
     humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
-    print(humidity, temperature)
-    print(json.dumps(buildMeasurements(temperature, humidity)))
     requests.post(API_URL, headers=headers, data=json.dumps(buildMeasurements(temperature, humidity)))
     s.enter(SECOND_BETWEEN_MEASURE, 1, measure, (sc,))
 

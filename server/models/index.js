@@ -7,7 +7,7 @@ const influx = new Influx.InfluxDB({
     protocol: config.database.protocol,
     username: config.database.username,
     password: config.database.password,
-    database: 'home',
+    database: config.database.name,
     schema: [
         {
             measurement: config.measurements.living_room_in.temperature,

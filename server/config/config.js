@@ -6,7 +6,8 @@ module.exports = {
         port: process.env.INFLUXDB_PORT || 8086,
         protocol: 'http',
         username: process.env.INFLUXDB_USERNAME || 'admin',
-        password: process.env.INFLUXDB_PASSWORD || 'admin'
+        password: process.env.INFLUXDB_PASSWORD || 'admin',
+        name: process.env.INFLUXDB_DB || 'home'
     },
     measurements: {
         living_room_in: {
