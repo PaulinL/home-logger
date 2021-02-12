@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+    home-logger-sensor:
+        environment:
+            - 'API_URL=${API_URL}'
+        volumes:
+            - '/sys/class/gpio:/sys/class/gpio'
+        privileged: true
+        image: plambert26/home-logger-sensor
+        restart: always
